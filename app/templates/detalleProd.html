@@ -1,0 +1,34 @@
+
+
+{% extends 'base.html' %}
+
+{% block encabezado %}
+<h1> Botas </h1>
+{% endblock %}
+
+  {% block contenido %}
+    <p>Actualmente tenemos registradas {{botas|length}} botas: </p>
+	
+	
+	<div class="align-left ">
+		<img src=""
+	</div>
+
+	
+	
+	
+	
+	
+	
+	<ol>
+		
+	  	<li>{{botas.nombre}}</li>
+		  <li>{{botas.suela}}</li>
+		  <li>{{botas.gama}}</li>
+		  <li>{{botas.marca}}</li>
+		  <li>{{botas.precio}}</li>
+		  <li>{{botas.talla}}</li>
+
+		
+	</ol>
+  {% endblock %}
