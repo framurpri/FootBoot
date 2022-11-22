@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang='es'>
 <head>
   <meta charset='utf-8'>
@@ -10,7 +11,7 @@
 <body>
   <header> 
   	{% block encabezado %}{% endblock %}
-  	<nav class="navbar navbar-expand-lg bg-light">
+  	<nav class="navbar navbar-expand-lg" style="background-color: #9C718C;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">FootBoot</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +31,19 @@
       </div>
     </nav>
   </header>
-  <section>
+
     {% block contenido %}{% endblock %}
-  </section>
-  {% block pie %}{% endblock %} 
+  
+  {% block pie %}
+  <footer>
+    <div class="row text-center">
+      <div class="col-md"><a>Aviso de privacidad</a></div>
+      <div class="col-md"><a>Términos de Uso</a></div>
+      <div class="col-md"><a>Datos de la empresa</a></div>
+      <div class="col-md"><a>Atención al cliente</a></div>
+      <div class="col-md"><a>Política de devolución</a></div>
+    </div>
+  </footer>
+  {% endblock %} 
 </body>
 </html>

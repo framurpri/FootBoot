@@ -1,34 +1,32 @@
+{% extends 'base.html' %} {% block encabezado %}
+<h1>Botas</h1>
+{% endblock %} {% block contenido %}
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8"><img src="{{botas.imagen}}" alt="altura" width="50%"></div>
+    <div class="col-md-4">
+      <div class="row">{{botas.nombre}}</div>
+      <div class="row">
+        <textarea></textarea>
+      </div>
+      <div class="row text-center">
+        <div class="col-md">Suela: {{botas.suela}}</div>
+        <div class="col-md">Gama: {{botas.gama}}</div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md">Marca: {{botas.marca}}</div>
+        <div class="col-md">Talla: {{botas.talla}}</div>
+      </div>
 
-{% extends 'base.html' %}
+      <div class="row text-center">
+        <div class="col-md">Precio: {{botas.precio}} €</div>
+        <div class="col-md">
+          <button class="btn btn-dark" type="button">Añadir a la cesta</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-{% block encabezado %}
-<h1> Botas </h1>
 {% endblock %}
-
-  {% block contenido %}
-    <p>Actualmente tenemos registradas {{botas|length}} botas: </p>
-	
-	
-	<div class="align-left ">
-		<img src=""
-	</div>
-
-	
-	
-	
-	
-	
-	
-	<ol>
-		
-	  	<li>{{botas.nombre}}</li>
-		  <li>{{botas.suela}}</li>
-		  <li>{{botas.gama}}</li>
-		  <li>{{botas.marca}}</li>
-		  <li>{{botas.precio}}</li>
-		  <li>{{botas.talla}}</li>
-
-		
-	</ol>
-  {% endblock %}
