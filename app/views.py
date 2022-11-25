@@ -7,8 +7,6 @@ from app.models import Botas
 # Create your views here.
 
 def detalleProd(request,id_botas):
-   
-    
     
     dato = get_object_or_404(Botas, pk=id_botas)
     
@@ -16,6 +14,9 @@ def detalleProd(request,id_botas):
 
 
 
+def cestaDeCompra(request):
+    
+    return render(request, 'cestaDeCompra.html')
 
 def inicio(request):
 
