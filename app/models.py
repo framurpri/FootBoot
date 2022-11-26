@@ -13,3 +13,10 @@ class Botas(models.Model):
     imagen = models.CharField(max_length=500)
 
 
+class Carrito(models.Model):
+    creation_date = models.DateTimeField()
+
+class BotasCarrito(models.Model):
+    bota = models.ForeignKey(Botas, on_delete=models.CASCADE)
+    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null = True)
+    cantidad = models.IntegerField()
