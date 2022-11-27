@@ -18,7 +18,11 @@
                 <td>{{ bota.descripcion }}</td>
                 <td>{{ bota.marca }}</td>
                 <td>{{ bota.precio }} €</td>
-                <td></td>
+                <td>   
+                    <a href="/app/botas/{{bota.id}}">
+                        Ver
+                    </a>
+                </td> 
             </tr>
             {% endfor %}
 
