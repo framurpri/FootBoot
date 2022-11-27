@@ -15,7 +15,20 @@ def detalleProd(request,id_botas):
     return render(request,'detalleProd.html',{'botas':dato})
 
 
+def base(request):
+   
+    
+    
+    dato = get_object_or_404(Botas)
+    
+    return render(request,'detalleProd.html',{'botas':dato})
 
+
+def carritoDeCompra(request):
+
+    botas = Botas.objects.all()
+
+    return render(request, 'carritoDeCompra.html', {'botas':botas})
 
 def inicio(request):
 
