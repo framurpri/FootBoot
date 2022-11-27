@@ -1,12 +1,7 @@
-
-
 {% extends 'base.html' %}
 
-{% block encabezado %}
-<h1> Botas </h1>
-{% endblock %}
-
   {% block contenido %}
-    <p>Actualmente tenemos registradas {{botas|length}} botas: </p>
-	
+      {% load static %}
+      <img src="{% static 'media/botas/futbolfondoas.jpg/' %}" class="img-fluid" alt="Logo">
   {% endblock %}
+  
