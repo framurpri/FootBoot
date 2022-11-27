@@ -1,28 +1,80 @@
 {% extends 'base.html' %} {% block encabezado %}
+
+{% csrf_token %}
+
 <h1>Botas</h1>
 {% endblock %} {% block contenido %}
 
+<style type="text/css">
+ 
+</style>
+
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-8"><img src="{{botas.imagen}}" alt="altura" width="50%"></div>
-    <div class="col-md-4">
-      <div class="row">{{botas.nombre}}</div>
-      <div class="row">
-        <textarea></textarea>
+    <div class="col-md-8 mt-5" >
+      <img src="{{botas.imagen.url}}" alt="altura" width="50%" />
+    </div>
+    
+    <div class="col-md-4 mt-5" style="font-size: 20px;" >
+      <div class="row mt-5">
+        <strong
+          ><input
+            style="font-size: 3rem; border: 0; border-style: none"
+            type="text"
+            value="{{botas.nombre}}"
+            readonly="True"
+        /></strong>
       </div>
-      <div class="row text-center">
+      <div class="row mt-5" >
+        <label class="required" for="id_descripcion"
+          >Descripción:
+          <input type="text" value="{{botas.descripcion}}" readonly="True"
+        /></label>
+      </div>
+      <div class="row  mt-5">
         <div class="col-md">Suela: {{botas.suela}}</div>
-        <div class="col-md">Gama: {{botas.gama}}</div>
+        <div class="col-md">
+          <label class="required" for="id_gama">Gama:</label>
+          <select name="gama" id="id_gama">
+            <option value="A">Alta</option>
+
+            <option value="M" selected="">Media</option>
+
+            <option value="B">Baja</option>
+          </select>
+        </div>
       </div>
-      <div class="row text-center">
+      <div class="row  mt-5">
         <div class="col-md">Marca: {{botas.marca}}</div>
-        <div class="col-md">Talla: {{botas.talla}}</div>
+        <div class="col-md">
+          <label class="required" for="id_talla">Talla:</label>
+          <select name="talla" id="id_talla">
+            <option value="T38">38</option>
+
+            <option value="T39">39</option>
+
+            <option value="T40">40</option>
+
+            <option value="T41">41</option>
+
+            <option value="T42" selected="">42</option>
+
+            <option value="T43">43</option>
+
+            <option value="T44">44</option>
+
+            <option value="T45">45</option>
+
+            <option value="T46">46</option>
+          </select>
+        </div>
       </div>
 
-      <div class="row text-center">
+      <div class="row mt-5 ">
         <div class="col-md">Precio: {{botas.precio}} €</div>
         <div class="col-md">
-          <button class="btn btn-dark" type="button">Añadir a la cesta</button>
+          <button class="btn btn-dark" type="submit">Añadir a la cesta</button>
         </div>
       </div>
     </div>
