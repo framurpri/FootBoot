@@ -28,6 +28,18 @@ class Botas(models.Model):
     ("T45","45"),
     ("T46","46"))
     talla = models.CharField(max_length=3,choices=TALLAS,default="T42")
-    imagen = models.CharField(max_length=500)
+    imagen = models.ImageField(upload_to='', null=True, blank=True)
 
+
+class Carrito(models.Model):
+    creation_date = models.DateTimeField()
+
+class BotasCarrito(models.Model):
+    bota = models.ForeignKey(Botas, on_delete=models.CASCADE)
+    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null = True)
+    cantidad = models.IntegerField()
+
+    
+    def __str__(self):
+        return self.nombre
 
