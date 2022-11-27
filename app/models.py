@@ -31,5 +31,15 @@ class Botas(models.Model):
     imagen = models.ImageField(upload_to='', null=True, blank=True)
 
 
+class Carrito(models.Model):
+    creation_date = models.DateTimeField()
+
+class BotasCarrito(models.Model):
+    bota = models.ForeignKey(Botas, on_delete=models.CASCADE)
+    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null = True)
+    cantidad = models.IntegerField()
+
+    
     def __str__(self):
         return self.nombre
+

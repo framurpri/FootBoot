@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'app',
 ]
 
+#Si tenemos una linea que encodee, debug_toolbar debe ir debajo de ese. Por ejemplo GzipMiddleWare...
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -49,6 +51,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+INTERNAL_IPS = [
+
+    "127.0.0.1"
+
 ]
 
 ROOT_URLCONF = 'PGPI.urls'
