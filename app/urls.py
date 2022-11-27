@@ -8,8 +8,5 @@ urlpatterns = [
     path('botas/<int:id_botas>',v.detalleProd),
     path('',v.inicio),
     path('base', v.base),
-    path('cestaDeCompra/', v.cestaDeCompra, name = "cestaDeCompra"),
-    path('carritoDeCompra/', views.carritoDeCompra, name='carritoDeCompra')
-]
-
-+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('carritoDeCompra/', v.carritoDeCompra, name='carritoDeCompra')
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -25,17 +25,13 @@ def base(request):
 def carritoDeCompra(request):
 
     botas = Botas.objects.all()
-
-<<<<<<< HEAD
-def cestaDeCompra(request):
-    
-    return render(request, 'cestaDeCompra.html')
-=======
     return render(request, 'carritoDeCompra.html', {'botas':botas})
->>>>>>> 7580d739538bd160110a15281bb3ffdd3fade551
+
+def cestaDeCompra(request):
+    return render(request, 'cestaDeCompra.html')
+    
 
 def inicio(request):
 
     botas= Botas.objects.all()
-
     return render(request,'inicio.html',{'botas':botas})
