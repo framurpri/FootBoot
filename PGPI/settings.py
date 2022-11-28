@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'estaticas'
 ]
 
 #Si tenemos una linea que encodee, debug_toolbar debe ir debajo de ese. Por ejemplo GzipMiddleWare...
