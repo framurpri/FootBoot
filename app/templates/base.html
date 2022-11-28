@@ -35,24 +35,24 @@
           </ul>
         </div>
       </div>
-      <a href="/app/carritoDeCompra/">">
+      <a href="/app/carritoDeCompra/">
         <img src="/media/botas/pngwing.com.png" alt = "" width="8%" style="float: right;">
       </a>
     </nav>
   </header>
-
+<body>
   {% block contenido %}{% endblock %}
   
+</body>
   {% block pie %}
   <footer>
     <div class="row text-center" style="background-color: #9C718C;">
-      <div class="col-md"><a>Aviso de privacidad</a></div>
-      <div class="col-md"><a>Términos de Uso</a></div>
-      <div class="col-md"><a>Datos de la empresa</a></div>
-      <div class="col-md"><a>Atención al cliente</a></div>
-      <div class="col-md"><a>Política de devolución</a></div>
+      <div class="col-md"><a href="/privacidad">Aviso de privacidad</a></div>
+      <div class="col-md"><a href="/terminos" >Términos de Uso</a></div>
+      <div class="col-md"><a href="/">Datos de la empresa</a></div>
+      <div class="col-md"><a href="/atencioncliente">Atención al cliente</a></div>
+      <div class="col-md"><a href="/devoluciones">Política de devolución</a></div>
     </div>
+    {% endblock %}
   </footer>
-  {% endblock %}
-</body>
 </html>
