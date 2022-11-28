@@ -29,6 +29,7 @@ urlpatterns = [
     path('envios/', eapp.envio),
     path('atencioncliente/', eapp.cliente),
     path('privacidad/', eapp.privacidad),
+    path('empresa/', eapp.empresa),
     path('terminos/', eapp.terminos),
     path('app/', include('app.urls')),
     
