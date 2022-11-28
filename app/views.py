@@ -1,7 +1,11 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from django.conf import settings
+
 from app.models import Botas, BotasCarrito
 from .forms import BotasCarritoForm
+from django.template import RequestContext
+from app.models import Botas
+
 
 
 # Create your views here.
@@ -31,6 +35,9 @@ def catalogo(request):
 def cestaDeCompra(request):
     return render(request, 'cestaDeCompra.html')
     
+def compra(request):
+    botas = Botas.objects.all()
+    return render(request, 'compra.html',{'botas':botas})
 
 def inicio(request):
 

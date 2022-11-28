@@ -9,7 +9,8 @@ urlpatterns = [
     path('',v.inicio),
     path('base', v.base),
     path('catalogo/', v.catalogo),
-    path('carritoDeCompra/', v.carritoDeCompra),
-    path('añadirBotaAlCarrito/', v.añadirBotaAlCarrito)
-
+    path('añadirBotaAlCarrito/', v.añadirBotaAlCarrito),
+    path('carritoDeCompra/', v.carritoDeCompra, name='carritoDeCompra'),
+    path('compra/',v.compra, name='compra'),
+    path('inicio.html',v.inicio, name ='inicio'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

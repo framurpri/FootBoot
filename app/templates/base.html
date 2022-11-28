@@ -9,13 +9,13 @@
   <link rel="stylesheet" src="styles.css">
   
 
-</head>
+</head> 
 <body>
   <header> 
   	{% block encabezado %}{% endblock %}
   	<nav class="navbar navbar-expand-lg" style="background-color: #9C718C;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">FootBoot</a>
+        <a class="navbar-brand" href="{% url 'inicio' %}">FootBoot</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,20 +27,25 @@
             <li class="nav-item">
               <a class="nav-link" href="/app/catalogo/">Catálogo de productos </a>
             </li>
+            <li clss="nav-item">
+              <a class="nav-link" href="{% url 'carritoDeCompra' %}"> 
+                <img alt="Carrito" src="pngwing.com.png" style="width:128px;height:128px;">
+              </a>
+            </li>
           </ul>
         </div>
       </div>
-      <a href="/app/carritoDeCompra/">
+      <a href="/app/carritoDeCompra/">">
         <img src="/media/botas/pngwing.com.png" alt = "" width="8%" style="float: right;">
       </a>
     </nav>
   </header>
 
-    {% block contenido %}{% endblock %}
+  {% block contenido %}{% endblock %}
   
   {% block pie %}
-  <footer class="footer">
-    <div class="row text-center">
+  <footer>
+    <div class="row text-center" style="background-color: #9C718C;">
       <div class="col-md"><a>Aviso de privacidad</a></div>
       <div class="col-md"><a>Términos de Uso</a></div>
       <div class="col-md"><a>Datos de la empresa</a></div>
@@ -48,6 +53,6 @@
       <div class="col-md"><a>Política de devolución</a></div>
     </div>
   </footer>
-  {% endblock %} 
+  {% endblock %}
 </body>
 </html>
