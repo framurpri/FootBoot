@@ -25,7 +25,7 @@
             value="{{botas.nombre}}"
             readonly="True"
         /></strong>
-      </div>
+      </div>  
       <div class="row mt-5" >
         <label class="required" for="id_descripcion"
           >Descripción:
@@ -74,7 +74,7 @@
       <div class="row mt-5 ">
         <div class="col-md">Precio: {{botas.precio}} €</div>
         <div class="col-md">
-          <button class="btn btn-dark" type="submit">Añadir a la cesta</button>
+          <button class="btn btn-info" href="{% url 'añadirBotaAlCarrito/{id_bota}' %}" role="button">Añadir a la cesta</button>
         </div>
       </div>
     </div>
