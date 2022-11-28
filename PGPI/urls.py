@@ -26,6 +26,10 @@ urlpatterns = [
     path('botas/<int:id_botas>',vapp.detalleProd),
     path('',vapp.inicio),
     path('devoluciones/', eapp.devolucion),
+    path('envios/', eapp.envio),
+    path('atencioncliente/', eapp.cliente),
+    path('privacidad/', eapp.privacidad),
+    path('terminos/', eapp.terminos),
     
 ]
 
