@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% csrf_token %}
+
+{% block encabezado %}  {% endblock %}
+
+{% block contenido %} 
+
+    <table class="table">
+        <tbody>
+
+            {% for bota in botas %}
+            <tr>
+                <td width="20%">
+                    <img src="{{ bota.imagen.url }}" width="30%">
+                </td>
+                <td>{{ bota.nombre }}</td>
+                <td>{{ bota.descripcion }}</td>
+                <td>{{ bota.marca }}</td>
+                <td>{{ bota.precio }} €</td>
+                <td>   
+                    <a href="/app/botas/{{bota.id}}">
+                        Ver
+                    </a>
+                </td> 
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+{% endblock %}
+
