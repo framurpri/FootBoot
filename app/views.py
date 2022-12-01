@@ -26,15 +26,18 @@ def carritoDeCompra(request):
     botas = Botas.objects.all()
     return render(request, 'carritoDeCompra.html', {'botas':botas})
 
+def borrarBota(request, id_botas):
+    
+    botas = Botas.objects.all()
+    bota = get_object_or_404(Botas, pk=id_botas)
+    bota.delete()
+    return render(request,'carritoDeCompra.html',{'botas': botas})
 
 def catalogo(request):
 
     botas = Botas.objects.all()
     return render(request, 'catalogo.html', {'botas':botas})
 
-def cestaDeCompra(request):
-    return render(request, 'cestaDeCompra.html')
-    
 def compra(request):
     botas = Botas.objects.all()
     return render(request, 'compra.html',{'botas':botas})

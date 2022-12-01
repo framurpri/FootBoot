@@ -13,4 +13,5 @@ urlpatterns = [
     path('carritoDeCompra/', v.carritoDeCompra, name='carritoDeCompra'),
     path('compra/',v.compra, name='compra'),
     path('',v.inicio, name ='inicio'),
+    path('carritoDeCompra/borrarbota/<int:id_botas>',v.borrarBota, name='borrarbota')
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
