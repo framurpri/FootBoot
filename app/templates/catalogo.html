@@ -2,7 +2,7 @@
 {% block contenido %} {% for bota in botas %}
 
 <div class="row mt-5 text-center">
-  <a href="{% url 'detalleProd' bota.id  %}>"
+  <a href="{% url 'detalleProd' bota.id  %}"
     ><img
       src="{{bota.imagen.url}}"
       width="70%"
