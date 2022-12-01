@@ -36,7 +36,8 @@ def buscar_bota(request):
     
     if request.method == "POST":
         searched = request.POST['searched']
-        return render(request, 'buscar.html',{'searched':searched})
+        botas = Botas.objects.filter(nombre__contains=searched)
+        return render(request, 'buscar.html',{'searched':searched, 'botas':botas})
     else:
        return render(request, 'buscar.html',{'searched':searched})
 
