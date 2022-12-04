@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 
@@ -42,4 +43,14 @@ class BotasCarrito(models.Model):
     
     def __str__(self):
         return self.nombre
+
+class Pedido(models.Model):
+    nombre=models.CharField(max_length=20, blank=False, null=False,help_text="Nombre")
+    apellidos=models.CharField(max_length=20,blank=False, null=False)
+    telefono = models.CharField(max_length=11,blank=False, null=False)
+    email = models.EmailField(blank=False, null=False)
+    direccion = models.CharField(max_length=150,blank=False, null=False)
+    PAGO = (('Contrareembolso','Contrareembolso'),('PaaS','Paas'))
+    formaPago = models.CharField(max_length=20,choices=PAGO,default="Contrareembolso",blank=False, null=False)
+
 
