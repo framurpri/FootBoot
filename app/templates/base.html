@@ -22,21 +22,17 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/app/">Inicio</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/app/catalogo/">Catálogo de productos </a>
             </li>
-            <li clss="nav-item">
-              <a class="nav-link" href="{% url 'carritoDeCompra' %}"> 
-                <img alt="Carrito" src="pngwing.com.png" style="width:128px;height:128px;">
-              </a>
-            </li>
+           
           </ul>
         </div>
       </div>
-      <a href="/app/carritoDeCompra/">
-        <img src="/media/botas/pngwing.com.png" alt = "" width="8%" style="float: right;">
+      <a href="{% url 'carritoDeCompra' %}">
+        <img src="/media/botas/pngwing.com.png" alt = "Carrito de compra" width="8%" style="float: right;">
       </a>
     </nav>
   </header>
@@ -52,6 +48,7 @@
       <div class="col-md"><a href="/eapp/">Datos de la empresa</a></div>
       <div class="col-md"><a href="/eapp/atencioncliente">Atención al cliente</a></div>
       <div class="col-md"><a href="/eapp/devoluciones">Política de devolución</a></div>
+      <div class="col-md"><a href="/eapp/envios">Política de envios</a></div>
     </div>
     {% endblock %}
   </footer>

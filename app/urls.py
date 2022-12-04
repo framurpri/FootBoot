@@ -4,8 +4,7 @@ from PGPI import settings
 from django.conf.urls.static import static 
 from . import views as v
 
-urlpatterns = [
-    path('botas/<int:id_botas>/',v.detalleProd),
+urlpatterns = [ 
     path('detalle/<int:id_botas>/',v.detalleProd, name="detalleProd"),
     path('base/', v.base),
     path('catalogo/', v.catalogo),
