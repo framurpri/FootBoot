@@ -4,9 +4,8 @@ from PGPI import settings
 from django.conf.urls.static import static 
 from . import views as v
 
-urlpatterns = [
-    path('botas/<int:id_botas>/',v.detalleProd),
-    path('detalle/<int:id_botas>/',v.detalleProd, name="detalleProd"),
+urlpatterns = [ 
+    path('detalle/<int:id_botas>/',v.añadirBotaAlCarrito.as_view(), name="detalleProd"),
     path('base/', v.base),
     path('catalogo/', v.catalogo),
     path('añadirBotaAlCarrito/', v.añadirBotaAlCarrito),
