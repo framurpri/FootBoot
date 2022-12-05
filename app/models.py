@@ -40,9 +40,6 @@ class BotasCarrito(models.Model):
     #carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null = True)
     cantidad = models.IntegerField()
 
-    
-    
-
 class Pedido(models.Model):
     nombre=models.CharField(max_length=20, blank=False, null=False,help_text="Nombre")
     apellidos=models.CharField(max_length=20,blank=False, null=False)
@@ -52,11 +49,6 @@ class Pedido(models.Model):
     PAGO = (('Contrareembolso','Contrareembolso'),('PaaS','Paas'))
     formaPago = models.CharField(max_length=20,choices=PAGO,default="Contrareembolso",blank=False, null=False)
     
-
-class AtencionCliente(models.Model):
-    email = models.EmailField(blank=False, null=False)
-    asunto = models.CharField(max_length=150, null = False)
-    descripcion = models.TextField(null=False)
 
 class AtencionC(models.Model):
     email = models.EmailField(blank=False, null=False)

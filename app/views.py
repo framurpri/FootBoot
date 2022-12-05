@@ -3,15 +3,13 @@ from django.conf import settings
 from django.views import View
 from app import models
 
-from app.models import Botas, BotasCarrito, Pedido, AtencionCliente
+from app.models import Botas, BotasCarrito, Pedido
 from .forms import BotasCarritoForm
 from django.template import RequestContext
 from app.models import Botas
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.views import View
-from app.models import AtencionCliente
-
 
 # Create your views here.
 
