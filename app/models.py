@@ -36,10 +36,9 @@ class Carrito(models.Model):
 
 class BotasCarrito(models.Model):
     bota = models.ForeignKey(Botas, on_delete=models.CASCADE)
-    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null = True)
+    #carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null = True)
     cantidad = models.IntegerField()
 
     
-    def __str__(self):
-        return self.nombre
+    
 
