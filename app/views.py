@@ -109,8 +109,27 @@ class Comprar(View):
             msg.send()
         botas = Botas.objects.all()
         return render(request, 'catalogo.html', {'botas':botas})
+        
 
-       
+def filtrarPorId(idS):
+        pedidos = Pedido.objects.all()
+        for pedido in pedidos:
+                if pedido.idSeguimiento == idS:
+                    res = pedido
+        return res
+class Seguimiento(View):
+    def get(self, request):
+        return render(request, 'seguimientoForm.html')
+    
+    def post(self, request):
+        if request.method == 'POST':
+           
+            idS = request.POST.get('idSeguimiento')
+            res = filtrarPorId(idS)
+            
+        return render(request, 'detallesSeguimiento.html', {'pedido': res})
+
+    
 
 class AtencionC(View):
     def get(self, request):
