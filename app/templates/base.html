@@ -30,6 +30,13 @@
            
           </ul>
         </div>
+        <form action="{% url 'buscar_bota' %}" method="POST">
+          
+          {% csrf_token %}
+          
+          <input type="search" name="searched" placeholder="search">
+          <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </form>
       </div>
       <a href="{% url 'carritoDeCompra' %}">
         <img src="/media/botas/pngwing.com.png" alt = "Carrito de compra" width="8%" style="float: right;">

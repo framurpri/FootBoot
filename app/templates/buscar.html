@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contenido %} 
+
+{% if searched %}
+    <h1>Has buscado: {{searched}}</h1>
+{% endif %}
+
+{% for bota in botas %}
+
+<div class="row mt-5 text-center">
+  <a href="{% url 'detalleProd' bota.id  %}"
+    ><img
+      src="{{bota.imagen.url}}"
+      width="70%"
+      height="50%"
+      alt="Imagen Bota"
+    />
+    <div class="text-center">{{bota.nombre}}</div>
+  </a>
+</div>
+{% endfor %}
+
+{% endblock %}

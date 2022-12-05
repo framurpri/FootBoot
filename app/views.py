@@ -20,20 +20,20 @@ def base(request):
 
     return render(request,'base.html')
 
-def carritoDeCompra(request):
+def carrito_de_compra(request):
 
-    precioTotal = calculaPrecioTotal()
-    botasC = BotasCarrito.objects.all()
+    precio_total = calcula_precio_total()
+    botas = BotasCarrito.objects.all()
 
-    return render(request, 'carritoDeCompra.html', {'botasC':botasC,'precioT':precioTotal})
+    return render(request, 'carritoDeCompra.html', {'botasC':botas,'precioT':precio_total})
 
-def calculaPrecioTotal():
-    botasC = BotasCarrito.objects.all()
-    precioTotal= 0.0
-    for b in botasC:
+def calcula_precio_total():
+    botas = BotasCarrito.objects.all()
+    precio_total= 0.0
+    for b in botas:
         
-        precioTotal+= float(b.cantidad)*float(b.bota.precio)
-    return precioTotal
+        precio_total+= float(b.cantidad)*float(b.bota.precio)
+    return precio_total
 
 
 def catalogo(request):
@@ -42,6 +42,16 @@ def catalogo(request):
     return render(request, 'catalogo.html', {'botas':botas})
 
 
+def buscar_bota(request):
+    
+    if request.method == "POST":
+        searched = request.POST['searched']
+        botas = Botas.objects.filter(nombre__contains=searched)
+        return render(request, 'buscar.html',{'searched':searched, 'botas':botas})
+    else:
+       return render(request, 'buscar.html',{'searched':searched})
+
+    
 def compra(request):
     botas = Botas.objects.all()
     return render(request, 'compra.html',{'botas':botas})
@@ -51,7 +61,7 @@ def inicio(request):
     botas= Botas.objects.all()
     return render(request,'inicio.html',{'botas':botas})
 
-class añadirBotaAlCarrito(View):
+class añadir_bota_al_carrito(View):
     
     def get(self,request,id_botas):
         
@@ -73,9 +83,9 @@ class añadirBotaAlCarrito(View):
 
 class Comprar(View):
     def get(self, request):
-        precioT = calculaPrecioTotal()
+        precio = calcula_precio_total()
 
-        return render(request, 'compra.html',{'precioT':precioT})
+        return render(request, 'compra.html',{'precioT':precio})
     
     def post(self, request):
         if request.method == 'POST':
@@ -84,18 +94,18 @@ class Comprar(View):
             apellidos = request.POST.get('apellidos')
             telefono = request.POST.get('telefono')
             direccion = request.POST.get('direccion')
-            metodoPago =request.POST.get('pago')
-            precioT = calculaPrecioTotal()
+            metodo_pago =request.POST.get('pago')
+            precio = calcula_precio_total()
             print(email)
-            print(metodoPago)
+            print(metodo_pago)
             
-            Pedido.objects.create(nombre=nombre,apellidos=apellidos,telefono=telefono,email=email,direccion=direccion,formaPago=metodoPago)
+            Pedido.objects.create(nombre=nombre,apellidos=apellidos,telefono=telefono,email=email,direccion=direccion,formaPago=metodo_pago)
 
             template = get_template('compra_realizada.html')
 
             # Se renderiza el template y se envias parametros
             content = template.render({'email': email,'nombre':nombre,'direccion':direccion,
-            'apellidos':apellidos,'telefono':telefono,'metodoPago':metodoPago,'precioT':precioT})
+            'apellidos':apellidos,'telefono':telefono,'metodoPago':metodo_pago,'precioT':precio})
 
             # Se crea el correo (titulo, mensaje, emisor, destinatario)
             msg = EmailMultiAlternatives(
