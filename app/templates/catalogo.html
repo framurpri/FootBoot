@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% csrf_token %} {% block encabezado %} {% endblock %}
+{% block contenido %} {% for bota in botas %}
+
+
+
+
+{% if bota.agotado == True %}
+<div class="row mt-5 text-center">
+  <a  style="text-decoration: none; color: darkslategrey;"
+    ><img
+      src="{{bota.imagen.url}}"
+      width="400px"
+      height="400px"
+      alt="Imagen Bota"
+    />
+    <div><strong class="text-center"  style="color: red;">PRODUCTO AGOTADO</strong></div>
+    <div class="text-center">{{bota.nombre}}</div>
+
+  </a>
+</div>
+
+
+{% else %}
+
+
+<div class="row mt-5 text-center">
+  <a href="{% url 'detalleProd' bota.id  %}" style="text-decoration: none; color: darkslategrey;"
+    ><img
+      src="{{bota.imagen.url}}"
+      width="400px"
+      height="400px"
+      alt="Imagen Bota"
+    />
+    <div class="text-center">{{bota.nombre}}</div>
+  </a>
+</div>
+
+{% endif %}
+{% endfor %} {% endblock %}

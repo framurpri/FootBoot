@@ -2,15 +2,14 @@
 
 {% csrf_token %}
 
-<h1>Botas</h1>
+
 {% endblock %} {% block contenido %}
 
-<style type="text/css">
- 
-</style>
 
 
-<div class="container-fluid">
+<form action=""   method="post" name="compra">
+  <div class="container-fluid">
+  {% csrf_token %}
   <div class="row">
     <div class="col-md-8 mt-5" >
       <img src="{{botas.imagen.url}}" alt="altura" width="50%" />
@@ -25,12 +24,11 @@
             value="{{botas.nombre}}"
             readonly="True"
         /></strong>
-      </div>
+      </div>  
       <div class="row mt-5" >
         <label class="required" for="id_descripcion"
           >Descripción:
-          <input type="text" value="{{botas.descripcion}}" readonly="True"
-        /></label>
+          <textarea  readonly="True">{{botas.descripcion}}</textarea></label>
       </div>
       <div class="row  mt-5">
         <div class="col-md">Suela: {{botas.suela}}</div>
@@ -73,12 +71,35 @@
 
       <div class="row mt-5 ">
         <div class="col-md">Precio: {{botas.precio}} €</div>
+        <div class="col-md"><label class="required" for="id_cantidad">Cantidad:</label>
+          <select name="cantidad" id="id_cantidad">
+            <option value="1" selected="">1</option>
+
+            <option value="2">2</option>
+
+            <option value="3">3</option>
+
+            <option value="4">4</option>
+
+            <option value="5" >5</option>
+
+            <option value="6">6</option>
+
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+
+         
+          </select>
+          
+        </div>
         <div class="col-md">
-          <button class="btn btn-dark" type="submit">Añadir a la cesta</button>
+          <button class="btn btn-info" type="submit">Añadir a la cesta</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+</form>
 {% endblock %}
