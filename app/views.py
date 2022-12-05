@@ -5,6 +5,7 @@ from app.models import Botas, BotasCarrito
 from .forms import BotasCarritoForm
 from django.template import RequestContext
 from app.models import Botas
+from django.views.decorators.http import require_http_methods
 
 
 
@@ -32,6 +33,7 @@ def catalogo(request):
     botas = Botas.objects.all()
     return render(request, 'catalogo.html', {'botas':botas})
 
+@require_http_methods(["POST"])
 def buscar_bota(request):
     
     if request.method == "POST":
@@ -39,7 +41,7 @@ def buscar_bota(request):
         botas = Botas.objects.filter(nombre__contains=searched)
         return render(request, 'buscar.html',{'searched':searched, 'botas':botas})
     else:
-       return render(request, 'buscar.html',{'searched':searched})
+       return render(request, 'buscar.html')
 
     
 def compra(request):
