@@ -1,5 +1,12 @@
-{% extends 'base.html' %} {% csrf_token %} {% block encabezado %} {% endblock %}
-{% block contenido %} {% for bota in botas %}
+{% extends 'base.html' %}
+
+{% block contenido %} 
+
+{% if searched %}
+    <h1>Has buscado: {{searched}}</h1>
+{% endif %}
+
+{% for bota in botas %}
 
 <div class="row mt-5 text-center">
   <a href="{% url 'detalleProd' bota.id  %}"
@@ -12,4 +19,6 @@
     <div class="text-center">{{bota.nombre}}</div>
   </a>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %}
+
+{% endblock %}

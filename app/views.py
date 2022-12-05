@@ -32,8 +32,15 @@ def catalogo(request):
     botas = Botas.objects.all()
     return render(request, 'catalogo.html', {'botas':botas})
 
-def cestaDeCompra(request):
-    return render(request, 'cestaDeCompra.html')
+def buscar_bota(request):
+    
+    if request.method == "POST":
+        searched = request.POST['searched']
+        botas = Botas.objects.filter(nombre__contains=searched)
+        return render(request, 'buscar.html',{'searched':searched, 'botas':botas})
+    else:
+       return render(request, 'buscar.html',{'searched':searched})
+
     
 def compra(request):
     botas = Botas.objects.all()
