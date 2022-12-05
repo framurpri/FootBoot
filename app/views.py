@@ -4,7 +4,7 @@ from django.views import View
 from app import models
 
 from app.models import Botas, BotasCarrito, Pedido, AtencionCliente
-from .forms import BotasCarritoForm
+
 from django.template import RequestContext
 from app.models import Botas
 from django.views.decorators.http import require_http_methods

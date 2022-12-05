@@ -34,8 +34,8 @@
           
           {% csrf_token %}
           
-          <input type="search" name="searched" placeholder="search">
-          <button class="btn btn-outline-secondary" type="submit">Search</button>
+          <input type="search" name="searched" placeholder="Busqueda de producto">
+          <button style="color: black;" class="btn btn-outline-secondary btn-primary" type="submit">Buscar</button>
         </form>
       </div>
       <a href="{% url 'carritoDeCompra' %}">
