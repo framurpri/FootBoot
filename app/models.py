@@ -51,5 +51,18 @@ class Pedido(models.Model):
     direccion = models.CharField(max_length=150,blank=False, null=False)
     PAGO = (('Contrareembolso','Contrareembolso'),('PaaS','Paas'))
     formaPago = models.CharField(max_length=20,choices=PAGO,default="Contrareembolso",blank=False, null=False)
+    
+
+class AtencionCliente(models.Model):
+    email = models.EmailField(blank=False, null=False)
+    asunto = models.CharField(max_length=150, null = False)
+    descripcion = models.TextField(null=False)
+
+class AtencionC(models.Model):
+    email = models.EmailField(blank=False, null=False)
+    asunto = models.CharField(max_length=150, null = False)
+    descripcion = models.TextField(null=False)
+    
+    
 
 
