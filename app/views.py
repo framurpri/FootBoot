@@ -22,13 +22,19 @@ def base(request):
 
 def carritoDeCompra(request):
 
+    precioTotal = calculaPrecioTotal()
+    botasC = BotasCarrito.objects.all()
+
+    return render(request, 'carritoDeCompra.html', {'botasC':botasC,'precioT':precioTotal})
+
+def calculaPrecioTotal():
     botasC = BotasCarrito.objects.all()
     precioTotal= 0.0
     for b in botasC:
         
         precioTotal+= float(b.cantidad)*float(b.bota.precio)
-    print(precioTotal)
-    return render(request, 'carritoDeCompra.html', {'botasC':botasC,'precioT':precioTotal})
+    return precioTotal
+
 
 def catalogo(request):
 
@@ -61,15 +67,15 @@ class añadirBotaAlCarrito(View):
             BotasCarrito.objects.update_or_create(bota=bota,cantidad = cantidad)    
             bota.talla = request.POST.get('talla')
             bota.gama = request.POST.get('gama')
-            botasC = BotasCarrito.objects.all()
-
-
-        return render(request, 'carritoDeCompra.html', {'botasC':botasC})
+            botas = Botas.objects.all()
+        return render(request, 'catalogo.html', {'botas':botas})
 
 
 class Comprar(View):
     def get(self, request):
-        return render(request, 'compra.html')
+        precioT = calculaPrecioTotal()
+
+        return render(request, 'compra.html',{'precioT':precioT})
     
     def post(self, request):
         if request.method == 'POST':
@@ -79,6 +85,7 @@ class Comprar(View):
             telefono = request.POST.get('telefono')
             direccion = request.POST.get('direccion')
             metodoPago =request.POST.get('pago')
+            precioT = calculaPrecioTotal()
             print(email)
             print(metodoPago)
             
@@ -88,7 +95,7 @@ class Comprar(View):
 
             # Se renderiza el template y se envias parametros
             content = template.render({'email': email,'nombre':nombre,'direccion':direccion,
-            'apellidos':apellidos,'telefono':telefono,'metodoPago':metodoPago})
+            'apellidos':apellidos,'telefono':telefono,'metodoPago':metodoPago,'precioT':precioT})
 
             # Se crea el correo (titulo, mensaje, emisor, destinatario)
             msg = EmailMultiAlternatives(
@@ -100,8 +107,10 @@ class Comprar(View):
 
             msg.attach_alternative(content, 'text/html')
             msg.send()
+        botas = Botas.objects.all()
+        return render(request, 'catalogo.html', {'botas':botas})
 
-        return render(request, 'catalogo.html')
+       
 
 class AtencionC(View):
     def get(self, request):
@@ -134,3 +143,6 @@ class AtencionC(View):
             msg.send()
 
         return render(request, 'inicio.html')
+
+        
+
