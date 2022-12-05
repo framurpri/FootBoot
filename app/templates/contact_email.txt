@@ -1,0 +1,7 @@
+Hola!
+
+Hemos recibido tu pedido.
+
+Nombre: 
+Email: 
+Mensaje: 

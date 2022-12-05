@@ -10,6 +10,6 @@ urlpatterns = [
     path('catalogo/', v.catalogo),
     path('añadirBotaAlCarrito/', v.añadirBotaAlCarrito),
     path('carritoDeCompra/', v.carritoDeCompra, name='carritoDeCompra'),
-    path('compra/',v.compra, name='compra'),
+    path('compra/',v.Comprar.as_view(), name='compra'),
     path('',v.inicio, name ='inicio'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
