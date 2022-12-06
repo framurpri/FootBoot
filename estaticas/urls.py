@@ -14,5 +14,6 @@ urlpatterns = [
     path('envios/', v.envio),
     path('atencioncliente/', v.cliente),
     path('privacidad/', v.privacidad),
-    path('terminos/', v.terminos)
+    path('terminos/', v.terminos),
+    path('empresa/', v.empresa)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

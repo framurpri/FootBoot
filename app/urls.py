@@ -14,4 +14,5 @@ urlpatterns = [
     path('atencionCliente/',v.AtencionC.as_view(), name='atencionCliente'),
     path('seguimiento/',v.Seguimiento.as_view(), name='seguimiento'),
     path('',v.inicio, name ='inicio'),
+    path('buscar/',v.buscar_bota,name="buscar_bota")
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
