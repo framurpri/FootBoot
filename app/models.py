@@ -1,3 +1,5 @@
+import random
+import string
 from django.db import models
 from django import forms
 
@@ -41,7 +43,8 @@ class BotasCarrito(models.Model):
     cantidad = models.IntegerField()
 
     
-    
+def random_id(lenght=5):
+    return ''.join(random.choice(string.digits) for x in range(lenght))    
 
 class Pedido(models.Model):
     nombre=models.CharField(max_length=20, blank=False, null=False,help_text="Nombre")
@@ -51,7 +54,11 @@ class Pedido(models.Model):
     direccion = models.CharField(max_length=150,blank=False, null=False)
     PAGO = (('Contrareembolso','Contrareembolso'),('PaaS','Paas'))
     formaPago = models.CharField(max_length=20,choices=PAGO,default="Contrareembolso",blank=False, null=False)
+    idSeguimiento = models.CharField(max_length=5, default=random_id, editable=True)
+    ESTADOS = (('En almacén','En almacén'), ('En reparto', 'En reparto'), ('Entregado', 'Entregado'))
+    estado =  models.CharField(max_length=20,choices=ESTADOS,default="En almacén",blank=False, null=False)
     
+
 
 class AtencionCliente(models.Model):
     email = models.EmailField(blank=False, null=False)
@@ -62,6 +69,9 @@ class AtencionC(models.Model):
     email = models.EmailField(blank=False, null=False)
     asunto = models.CharField(max_length=150, null = False)
     descripcion = models.TextField(null=False)
+
+
+
     
     
 
