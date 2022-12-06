@@ -4,12 +4,16 @@ from django.views import View
 from app import models
 
 from app.models import Botas, BotasCarrito, Pedido
-from .forms import BotasCarritoForm
+from .forms import RegistroForm
 from django.template import RequestContext
 from app.models import Botas
+from django.views.decorators.http import require_http_methods
+
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.views import View
+from django.contrib.auth import login, authenticate
+from django.contrib import messages
 
 # Create your views here.
 
@@ -40,6 +44,7 @@ def catalogo(request):
     return render(request, 'catalogo.html', {'botas':botas})
 
 
+@require_http_methods(["POST"])
 def buscar_bota(request):
     
     if request.method == "POST":
@@ -47,7 +52,7 @@ def buscar_bota(request):
         botas = Botas.objects.filter(nombre__contains=searched)
         return render(request, 'buscar.html',{'searched':searched, 'botas':botas})
     else:
-       return render(request, 'buscar.html',{'searched':searched})
+       return render(request, 'buscar.html')
 
     
 def compra(request):
@@ -151,6 +156,22 @@ class AtencionC(View):
             msg.send()
 
         return render(request, 'inicio.html')
+
+def registro(request):
+    data = {
+        'form': RegistroForm()
+    }
+
+    if request.method == 'POST':
+        formulario = RegistroForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"],email=formulario.cleaned_data["email"] , password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, 'Te has registrado correctamemete')
+            return redirect(to="inicio")
+        data['form'] = formulario
+    return render(request, 'form_registro.html', data)
 
         
 

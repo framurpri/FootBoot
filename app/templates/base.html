@@ -38,9 +38,16 @@
           <button class="btn btn-outline-secondary" type="submit">Search</button>
         </form>
       </div>
-      <a href="{% url 'carritoDeCompra' %}">
-        <img src="/media/botas/pngwing.com.png" alt = "Carrito de compra" width="8%" style="float: right;">
-      </a>
+      <div class="container-fluid">
+        {% if user.is_authenticated %}
+          <p style="float:right;">{{user.email}}</p>
+        {% else %}
+          <a href="{% url 'registro' %}"> Registrate</a>
+        {% endif %}
+        <a href="{% url 'carritoDeCompra' %}">
+          <img src="/media/botas/pngwing.com.png" alt = "Carrito de compra" width="8%" style="float: right;">
+        </a>
+      </div>
     </nav>
   </header>
 <body>

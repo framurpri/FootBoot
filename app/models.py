@@ -30,7 +30,7 @@ class Botas(models.Model):
     ("T46","46"))
     talla = models.CharField(max_length=3,choices=TALLAS,default="T42")
     imagen = models.ImageField(upload_to='', null=True, blank=True)
-
+    agotado = models.BooleanField(default=False)
 
 class Carrito(models.Model):
     creation_date = models.DateTimeField()
