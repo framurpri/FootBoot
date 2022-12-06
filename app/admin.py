@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from app.models import Botas, Carrito, BotasCarrito, Pedido, AtencionC
 
+
 # Register your models here.
 
 admin.site.register(Botas)
