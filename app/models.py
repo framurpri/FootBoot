@@ -42,7 +42,7 @@ class BotasCarrito(models.Model):
     #carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null = True)
     cantidad = models.IntegerField()
 
-    
+
 def random_id(lenght=5):
     return ''.join(random.choice(string.digits) for x in range(lenght))    
 
@@ -59,11 +59,6 @@ class Pedido(models.Model):
     estado =  models.CharField(max_length=20,choices=ESTADOS,default="En almacén",blank=False, null=False)
     
 
-
-class AtencionCliente(models.Model):
-    email = models.EmailField(blank=False, null=False)
-    asunto = models.CharField(max_length=150, null = False)
-    descripcion = models.TextField(null=False)
 
 class AtencionC(models.Model):
     email = models.EmailField(blank=False, null=False)
