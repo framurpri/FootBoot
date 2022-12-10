@@ -1,25 +1,32 @@
 {% extends 'base.html' %} {% csrf_token %} {% block encabezado %} {% endblock %}
 {% block contenido %} 
-{% for bota in botas %}
+{% for botaC in botasC %}
+
+
 <div class="row mt-5" style="border-color: grey; border-style: solid">
   <div class="col-md-4">
-    <img src="{{bota.imagen.url}}" height="80%" width="30%" />
+    <a href="{% url 'detalleProd' botaC.bota.id  %}" style="text-decoration:none ; color: black;">
+    <img alt="bota" src="{{botaC.bota.imagen.url}}" height="80%" width="30%" />
+  </a>
   </div>
   <div class="col-md-5">
     <div
       class="col-md"
       style="font-size: 1.5rem; font-family: Arial, Helvetica, sans-serif"
     >
-      <strong>{{bota.nombre}}</strong>
+      <strong>{{botaC.bota.nombre}}</strong>
     </div>
-    <div class="col-md mt-5">{{bota.descripcion}}</div>
+    <div class="col-md mt-5">Cantidad: {{botaC.cantidad}}</div>
   </div>
-  <div class="col-md" style="font-size: 2rem">{{ bota.precio }} €</div>
+  <div class="col-md" style="font-size: 2rem">{{ botaC.bota.precio }} €</div>
   <div class="col-md-2">
     <button type="button" class="btn btn-danger">Eliminar</button>
   </div>
 </div>
 {% endfor %}
-<div class="row text-center mt-5"><button type="submit" class="btn btn-dark d-grid gap-2 col-6 mx-auto" style="font-size: 1.75rem;"><strong>PAGAR</strong></button></div>
+
+<div class="row text-center mt-5"><div class="col-md" style="font-size: 1.75rem;"><strong>Total: {{ precioT }}</strong></div></div>
+<div class="row text-center mt-5">
+  <a href="{% url 'compra' %}" style="text-decoration: none;"><button type="button" class="btn btn-dark d-grid gap-2 col-6 mx-auto" style="font-size: 1.75rem;"><strong>PAGAR</strong></button></a></div>
 
 {% endblock %}

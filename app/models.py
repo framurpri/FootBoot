@@ -1,4 +1,7 @@
+import random
+import string
 from django.db import models
+from django import forms
 
 # Create your models here.
 
@@ -29,17 +32,42 @@ class Botas(models.Model):
     ("T46","46"))
     talla = models.CharField(max_length=3,choices=TALLAS,default="T42")
     imagen = models.ImageField(upload_to='', null=True, blank=True)
-
+    agotado = models.BooleanField(default=False)
 
 class Carrito(models.Model):
     creation_date = models.DateTimeField()
 
 class BotasCarrito(models.Model):
     bota = models.ForeignKey(Botas, on_delete=models.CASCADE)
-    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null = True)
+    #carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE, null = True)
     cantidad = models.IntegerField()
 
+
+def random_id(lenght=5):
+    return ''.join(random.choice(string.digits) for x in range(lenght))    
+
+class Pedido(models.Model):
+    nombre=models.CharField(max_length=20, blank=False, null=False,help_text="Nombre")
+    apellidos=models.CharField(max_length=20,blank=False, null=False)
+    telefono = models.CharField(max_length=11,blank=False, null=False)
+    email = models.EmailField(blank=False, null=False)
+    direccion = models.CharField(max_length=150,blank=False, null=False)
+    PAGO = (('Contrareembolso','Contrareembolso'),('PaaS','Paas'))
+    formaPago = models.CharField(max_length=20,choices=PAGO,default="Contrareembolso",blank=False, null=False)
+    idSeguimiento = models.CharField(max_length=5, default=random_id, editable=True)
+    ESTADOS = (('En almacén','En almacén'), ('En reparto', 'En reparto'), ('Entregado', 'Entregado'))
+    estado =  models.CharField(max_length=20,choices=ESTADOS,default="En almacén",blank=False, null=False)
     
-    def __str__(self):
-        return self.nombre
+
+
+class AtencionC(models.Model):
+    email = models.EmailField(blank=False, null=False)
+    asunto = models.CharField(max_length=150, null = False)
+    descripcion = models.TextField(null=False)
+
+
+
+    
+    
+
 

@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'estaticas'
+    'estaticas',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #Si tenemos una linea que encodee, debug_toolbar debe ir debajo de ese. Por ejemplo GzipMiddleWare...
 
@@ -141,3 +144,11 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
     '/var/www/static/',
 ]
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "albertogalleg365@gmail.com"
+EMAIL_HOST_PASSWORD = "quyowznqfjujmyba"
+

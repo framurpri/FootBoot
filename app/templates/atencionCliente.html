@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block encabezado %} {% endblock %}
+{% block contenido %}
+
+<form
+action=""   method="POST" name="atencionC">
+{% csrf_token %}
+<div class="container-fluid" style="font-size: 1.5rem;">
+    <div class="row text-center mt-5">
+        <p class = "col-md text-center"> Contacta con nosotros</p>
+    </div>
+    <div class="row text-center mt-5">
+        <div class="col-md text-center"><input type="email" required="true" name="email" placeholder="Correo electrónico"></div></div>
+        <div class="row text-center mt-5">
+        <div class="col-md text-center"><input type="text" required="true" name="asunto" placeholder="Asunto"></div></div>
+        <div class="row text-center mt-5">
+        <div class="col-md text-center"><textarea type="text" required="true" name="descripcion" placeholder="Descripción"></textarea></div></div>
+    
+    <br></br>
+ 
+
+    <div class="row d-grid gap-2 col-6 mx-auto"><button style="font-size: 2rem;" class="btn btn-dark btn-sm" type="submit">Enviar</button></div>
+    <br></br>
+</div>
+</form>
+{% endblock %}

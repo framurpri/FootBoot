@@ -11,6 +11,16 @@
 
 </head> 
 <body>
+  <style>
+    footer {
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+}
+  </style>
   <header> 
   	{% block encabezado %}{% endblock %}
   	<nav class="navbar navbar-expand-lg" style="background-color: #9C718C;">
@@ -22,43 +32,51 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/app/">Inicio</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/app/catalogo/">Catálogo de productos </a>
             </li>
-            <li clss="nav-item">
-              <a class="nav-link" href="{% url 'carritoDeCompra' %}"> 
-                <img alt="Carrito" src="pngwing.com.png" style="width:128px;height:128px;">
-              </a>
+            <li class="nav-item">
+              <a class="nav-link" href="/app/seguimiento/">Seguimiento de pedidos </a>
             </li>
+           
           </ul>
         </div>
         <form action="{% url 'buscar_bota' %}" method="POST">
           
           {% csrf_token %}
           
-          <input type="search" name="searched" placeholder="search">
-          <button class="btn btn-outline-secondary" type="submit">Search</button>
+          <input type="search" name="searched" placeholder="Busqueda de producto">
+          <button style="color: black;" class="btn btn-outline-secondary btn-primary" type="submit">Buscar</button>
         </form>
       </div>
-      <a href="/app/carritoDeCompra/">
-        <img src="/media/botas/pngwing.com.png" alt = "" width="8%" style="float: right;">
-      </a>
+      <div class="container-fluid">
+        {% if user.is_authenticated %}
+          <p style="float:right;">{{user.email}}</p>
+        {% else %}
+          <a href="{% url 'registro' %}"> Registrate</a>
+        {% endif %}
+        <a href="{% url 'carritoDeCompra' %}">
+          <img src="/media/botas/pngwing.com.png" alt = "Carrito de compra" width="8%" style="float: right;">
+        </a>
+      </div>
     </nav>
   </header>
 <body>
   {% block contenido %}{% endblock %}
   
+
 </body>
   {% block pie %}
-  <footer>
+  <footer >
     <div class="row text-center" style="background-color: #9C718C;">
-      <div class="col-md"><a href="/eapp/privacidad">Aviso de privacidad</a></div>
-      <div class="col-md"><a href="/eapp/terminos" >Términos de Uso</a></div>
-      <div class="col-md"><a href="/eapp/">Datos de la empresa</a></div>
-      <div class="col-md"><a href="/eapp/atencioncliente">Atención al cliente</a></div>
-      <div class="col-md"><a href="/eapp/devoluciones">Política de devolución</a></div>
+      <div class="col-md"><a  style="text-decoration:none ; color: rgb(29, 28, 28);" href="/eapp/privacidad">Aviso de privacidad</a></div>
+      <div class="col-md"><a style="text-decoration:none ; color: rgb(29, 28, 28);"href="/eapp/terminos" >Términos de Uso</a></div>
+      <div class="col-md"><a style="text-decoration:none ; color: rgb(29, 28, 28);"href="/eapp/empresa">Datos de la empresa</a></div>
+      <div class="col-md"><a style="text-decoration:none ; color: rgb(29, 28, 28);"href="/app/atencionCliente">Atención al cliente</a></div>
+      <div class="col-md"><a style="text-decoration:none ; color: rgb(29, 28, 28);"href="/eapp/devoluciones">Política de devolución</a></div>
+      <div class="col-md"><a style="text-decoration:none ; color: rgb(29, 28, 28);"href="/eapp/envios">Política de envios</a></div>
     </div>
     {% endblock %}
   </footer>
