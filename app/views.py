@@ -22,6 +22,22 @@ def base(request):
 
     return render(request,'base.html')
 
+def catalogo(request):
+
+    botas = Botas.objects.all()
+    botasTotal = Botas.objects.all()
+
+    print(botasTotal)
+    return render(request, 'catalogo.html', {'botas':botas,'botasTotal':botasTotal})
+def filtro_marca(request):
+    
+    botas= Botas.objects.filter(marca=request.POST.get('filtroMarca'))
+    botasTotal = Botas.objects.all()
+
+    
+    return render(request, 'catalogo.html', {'botasTotal':botasTotal,'botas':botas})
+
+
 def carrito_de_compra(request):
 
     precio_total = calcula_precio_total()
@@ -38,11 +54,6 @@ def calcula_precio_total():
     return precio_total
 
 
-def catalogo(request):
-
-    botas = Botas.objects.all()
-    return render(request, 'catalogo.html', {'botas':botas})
-
 
 @require_http_methods(["POST"])
 def buscar_bota(request):
@@ -54,6 +65,7 @@ def buscar_bota(request):
     else:
        return render(request, 'buscar.html')
 
+
     
 def compra(request):
     botas = Botas.objects.all()
@@ -63,6 +75,14 @@ def inicio(request):
 
     botas= Botas.objects.all()
     return render(request,'inicio.html',{'botas':botas})
+
+def borrarElemCarrito(request,id_botaC):
+    BotasCarrito.objects.filter(id=id_botaC).delete()
+    precio_total = calcula_precio_total()
+    botas = BotasCarrito.objects.all()
+
+    return render(request, 'carritoDeCompra.html', {'botasC':botas,'precioT':precio_total})
+
 
 class añadir_bota_al_carrito(View):
     
@@ -102,13 +122,14 @@ class Comprar(View):
             print(email)
             print(metodo_pago)
             
-            Pedido.objects.create(nombre=nombre,apellidos=apellidos,telefono=telefono,email=email,direccion=direccion,formaPago=metodo_pago)
+            pedido = Pedido.objects.create(nombre=nombre,apellidos=apellidos,telefono=telefono,email=email,direccion=direccion,formaPago=metodo_pago)
+
 
             template = get_template('compra_realizada.html')
 
             # Se renderiza el template y se envias parametros
             content = template.render({'email': email,'nombre':nombre,'direccion':direccion,
-            'apellidos':apellidos,'telefono':telefono,'metodoPago':metodo_pago,'precioT':precio})
+            'apellidos':apellidos,'telefono':telefono,'metodoPago':metodo_pago,'precioT':precio,'idSeguimiento':pedido.idSeguimiento})
 
             # Se crea el correo (titulo, mensaje, emisor, destinatario)
             msg = EmailMultiAlternatives(
@@ -121,6 +142,7 @@ class Comprar(View):
             msg.attach_alternative(content, 'text/html')
             msg.send()
         botas = Botas.objects.all()
+        BotasCarrito.objects.all().delete()
         return render(request, 'catalogo.html', {'botas':botas})
         
 
