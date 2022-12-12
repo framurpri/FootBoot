@@ -106,10 +106,14 @@ class añadir_bota_al_carrito(View):
 
 class Comprar(View):
     def get(self, request):
-        precio = calcula_precio_total()
+        if BotasCarrito.objects.all():
+            precio = calcula_precio_total()
 
-        return render(request, 'compra.html',{'precioT':precio})
-    
+            return render(request, 'compra.html',{'precioT':precio})
+        else:
+            precio_total = calcula_precio_total()
+            botas = BotasCarrito.objects.all()
+            return render(request, 'carritoDeCompra.html', {'botasC':botas,'precioT':precio_total})
     def post(self, request):
         if request.method == 'POST':
             email = request.POST.get('email')
