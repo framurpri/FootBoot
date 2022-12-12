@@ -15,4 +15,7 @@ urlpatterns = [
     path('seguimiento/',v.Seguimiento.as_view(), name='seguimiento'),
     path('',v.inicio, name ='inicio'),
     path('buscar/',v.buscar_bota,name="buscar_bota"),
+    path('borrarBotaCarrito/<int:id_botaC>/',v.borrarElemCarrito,name="borrarElemCarrito"),
+    path('filtroMarca/',v.filtro_marca,name="filtro_marca")
+
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

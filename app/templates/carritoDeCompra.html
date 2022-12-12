@@ -20,7 +20,7 @@
   </div>
   <div class="col-md" style="font-size: 2rem">{{ botaC.bota.precio }} €</div>
   <div class="col-md-2">
-    <button type="button" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'borrarElemCarrito' botaC.id %}"  style="text-decoration: none;"><button type="button" class="btn btn-danger">Eliminar</button></a>
   </div>
 </div>
 {% endfor %}
