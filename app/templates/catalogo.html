@@ -5,13 +5,25 @@
           
   {% csrf_token %}
   
-  <select name="filtroMarca" placeholder="Filtrar por marca">
-    {% for b in botasTotal%}
-    <option>{{ b.marca }}</option>
+  Filtrar por marca:
+  <select name="filtro" placeholder="Filtrar por marca">
+    {% for m in marcas%}
+    <option>{{ m }}</option>
+    {% endfor %}
+  </select>
+    
+  Filtrar por gama:
+  <select  name="filtroGama" placeholder="Filtrar por marca">
+    {% for g in gamas%}
+    <option >{{ g }}</option>
     {% endfor %}
   </select>
     <button style="color: black;" class="btn btn-outline-secondary btn-primary" type="submit">Filtrar</button>
   </form>
+
+
+
+
 {% for bota in botas %}
 
 {% if bota.agotado == True %}

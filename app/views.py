@@ -26,16 +26,29 @@ def catalogo(request):
 
     botas = Botas.objects.all()
     botasTotal = Botas.objects.all()
+    marcas = set()
+    gamas =set()
+    for b in botasTotal:
+        marcas.add(b.marca)
+        gamas.add(b.gama)
+   
+    
 
-    print(botasTotal)
-    return render(request, 'catalogo.html', {'botas':botas,'botasTotal':botasTotal})
+        
+    return render(request, 'catalogo.html', {'botas':botas,'marcas':marcas,'gamas':gamas})
+
 def filtro_marca(request):
     
-    botas= Botas.objects.filter(marca=request.POST.get('filtroMarca'))
+    botas= Botas.objects.filter(marca=request.POST.get('filtro'),gama=request.POST.get('filtroGama'))
     botasTotal = Botas.objects.all()
-
+    marcas = set()
+    gamas =set()
+    for b in botasTotal:
+        marcas.add(b.marca)
+        gamas.add(b.gama)
     
-    return render(request, 'catalogo.html', {'botasTotal':botasTotal,'botas':botas})
+    
+    return render(request, 'catalogo.html', {'marcas':marcas,'gamas':gamas,'botas':botas})
 
 
 def carrito_de_compra(request):
@@ -100,6 +113,7 @@ class añadir_bota_al_carrito(View):
             BotasCarrito.objects.update_or_create(bota=bota,cantidad = cantidad)    
             bota.talla = request.POST.get('talla')
             bota.gama = request.POST.get('gama')
+                
             botas = Botas.objects.all()
         return render(request, 'catalogo.html', {'botas':botas})
 
