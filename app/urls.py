@@ -1,5 +1,4 @@
 from django.urls import path
-from app import views
 from PGPI import settings
 from django.conf.urls.static import static 
 from . import views as v
@@ -13,7 +12,7 @@ urlpatterns = [
     path('compra/',v.Comprar.as_view(), name='compra'),
     path('atencionCliente/',v.AtencionC.as_view(), name='atencionCliente'),
     path('seguimiento/',v.Seguimiento.as_view(), name='seguimiento'),
-    path('',v.inicio, name ='inicio'),
+    path(' ',v.inicio, name ='inicio'),
     path('buscar/',v.buscar_bota,name="buscar_bota"),
     path('borrarBotaCarrito/<int:id_botaC>/',v.borrarElemCarrito,name="borrarElemCarrito"),
     path('filtroMarca/',v.filtro_marca,name="filtro_marca")

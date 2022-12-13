@@ -33,14 +33,7 @@
       <div class="row  mt-5">
         <div class="col-md">Suela: {{botas.suela}}</div>
         <div class="col-md">
-          <label class="required" for="id_gama">Gama:</label>
-          <select name="gama" id="id_gama">
-            <option value="A">Alta</option>
-
-            <option value="M" selected="">Media</option>
-
-            <option value="B">Baja</option>
-          </select>
+          Gama: {{botas.gama}}
         </div>
       </div>
       <div class="row  mt-5">
@@ -70,7 +63,7 @@
       </div>
 
       <div class="row mt-5 ">
-        <div class="col-md">Precio: {{botas.precio}} €</div>
+        <div class="col-md" >Precio: {{botas.precio}} €</div>
         <div class="col-md"><label class="required" for="id_cantidad">Cantidad:</label>
           <select name="cantidad" id="id_cantidad">
             <option value="1" selected="">1</option>

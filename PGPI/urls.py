@@ -23,7 +23,8 @@ from estaticas import views as eapp
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',vapp.registro, name='registro'),
+    path('',vapp.inicio,),
+    path('registro/',vapp.registro, name='registro'),
     path('app/', include('app.urls')),
     path('eapp/',include('estaticas.urls'))
 ]
